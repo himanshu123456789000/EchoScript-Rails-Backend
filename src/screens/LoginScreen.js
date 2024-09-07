@@ -1,8 +1,7 @@
-// screens/LoginScreen.js
-
 import React, { useState } from 'react';
-import { View, StyleSheet, Text, Alert } from 'react-native';
-import { TextInput, Button, HelperText } from 'react-native-paper';
+import { View, Text, Alert } from 'react-native';
+import { TextInput, Button } from 'react-native-paper';
+import styles from '../styles/LoginScreenStyles';  // Import styles
 
 export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState('');
@@ -66,29 +65,3 @@ export default function LoginScreen({ navigation }) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    padding: 20,
-  },
-  title: {
-    fontSize: 26,
-    textAlign: 'center',
-    marginBottom: 20,
-  },
-  input: {
-    marginBottom: 10,
-  },
-  button: {
-    marginTop: 10,
-  },
-  signupButton: {
-    marginTop: 10,
-  },
-  errorMessage: {
-    color: 'red',
-    textAlign: 'center',
-  },
-});
