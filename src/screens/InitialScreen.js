@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome'; // Import Icon for microphone
+import { View, Text, StyleSheet } from 'react-native';
+import CustomButton from '../components/CustomButton';
+import Icon from 'react-native-vector-icons/FontAwesome'; // Microphone Icon
 
-export default function InitialScreen({ navigation }) { // Receive the navigation prop
+export default function InitialScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.appName}>EchoScript</Text>
@@ -10,17 +11,11 @@ export default function InitialScreen({ navigation }) { // Receive the navigatio
       {/* Microphone Icon */}
       <Icon name="microphone" size={100} color="#4b0082" style={styles.icon} />
 
-      {/* Welcome Message */}
       <Text style={styles.welcomeText}>Welcome to EchoScript</Text>
       <Text style={styles.subText}>Real-time Transcribing</Text>
 
       {/* Start Transcribing Button */}
-      <TouchableOpacity 
-        style={styles.button} 
-        onPress={() => navigation.navigate('Login')} // Navigate to Login on press
-      >
-        <Text style={styles.buttonText}>Start Transcribing</Text>
-      </TouchableOpacity>
+      <CustomButton title="Start Transcribing" onPress={() => navigation.navigate('Login')} />
     </View>
   );
 }
@@ -52,17 +47,5 @@ const styles = StyleSheet.create({
     color: '#888',
     marginBottom: 40,
     textAlign: 'center',
-  },
-  button: {
-    backgroundColor: '#6a1b9a',
-    borderRadius: 25,
-    paddingVertical: 12,
-    paddingHorizontal: 25,
-    alignItems: 'center',
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: 'bold',
   },
 });
