@@ -41,7 +41,14 @@ export default function SignupScreen({ navigation }) {
     <View style={styles.container}>
       <Text style={styles.title}>Sign Up for EchoScript</Text>
       <TextInput
-        label="Name"
+        label="Full Name"
+        value={name}
+        mode="outlined"
+        onChangeText={setName}
+        style={styles.input}
+      />
+      <TextInput
+        label="Mobile No."
         value={name}
         mode="outlined"
         onChangeText={setName}
@@ -55,14 +62,7 @@ export default function SignupScreen({ navigation }) {
         style={styles.input}
         keyboardType="email-address"
       />
-      <TextInput
-        label="Password"
-        value={password}
-        mode="outlined"
-        onChangeText={setPassword}
-        secureTextEntry
-        style={styles.input}
-      />
+      
       {errorMessage ? <Text style={styles.errorMessage}>{errorMessage}</Text> : null}
       <Button mode="contained" onPress={onSignup} style={styles.button}>
         Sign Up
