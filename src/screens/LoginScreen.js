@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { View, Text, Alert } from 'react-native';
+import { View, Text, Alert, TouchableOpacity } from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { API_URL } from '@env';  // Import the API URL
 import styles from '../styles/LoginScreenStyles';  // Import styles
 
 export default function LoginScreen({ navigation }) {
@@ -15,18 +17,25 @@ export default function LoginScreen({ navigation }) {
     }
 
     try {
-      const response = await fetch('https://dummyapi.com/login', {
+      const response = await fetch(`${API_URL}/users/sign_in`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({
+          user: {
+            email: email,
+            password: password,
+          }
+        }),
       });
 
       const data = await response.json();
 
       if (response.ok) {
-        Alert.alert('Login Successful', `Welcome ${data.user.name}!`);
+        // Store the token in AsyncStorage
+        await AsyncStorage.setItem('token', data.token);
+        Alert.alert('Login Successful', `Welcome ${data.user.email}!`);
         // Navigate to home/dashboard after successful login
       } else {
         setErrorMessage(data.error || 'Login failed');
@@ -59,6 +68,11 @@ export default function LoginScreen({ navigation }) {
       <Button mode="contained" onPress={onLogin} style={styles.button}>
         Login
       </Button>
+
+      <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')} style={styles.forgotPasswordContainer}>
+        <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
+      </TouchableOpacity>
+      
       <Button onPress={() => navigation.navigate('Signup')} style={styles.signupButton}>
         Don’t have an account? Sign Up
       </Button>

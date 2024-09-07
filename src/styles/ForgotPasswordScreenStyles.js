@@ -9,28 +9,29 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 26,
     textAlign: 'center',
-    marginBottom: 20,
-  },
-  input: {
     marginBottom: 10,
   },
-  button: {
-    marginTop: 10,
+  description: {
+    textAlign: 'center',
+    fontSize: 16,
+    marginBottom: 20,
+    color: '#555',
   },
-  signupButton: {
+  input: {
+    marginBottom: 20,
+  },
+  button: {
     marginTop: 10,
   },
   errorMessage: {
     color: 'red',
     textAlign: 'center',
+    marginBottom: 10,
   },
-  forgotPasswordContainer: {
-    marginTop: 15,
-    alignItems: 'center',
-  },
-  forgotPasswordText: {
-    color: '#4b0082', // You can change this color based on your theme
-    textDecorationLine: 'underline',
+  successMessage: {
+    color: 'green',
+    textAlign: 'center',
+    marginBottom: 10,
   },
 });
 
